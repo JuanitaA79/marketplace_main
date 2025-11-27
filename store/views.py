@@ -61,7 +61,7 @@ def logout_user(request):
 @login_required
 def add_item(request):
     if request.method == 'POST':
-        form = NewItemForm(request.Post, request.FILES)
+        form = NewItemForm(request.POST, request.FILES)
 
         if form.is_valid():
             item = form.save(commit=False)
@@ -73,6 +73,7 @@ def add_item(request):
         form = NewItemForm()
         context = {
             'form': form,
-            'title': 'New Item'
+            'title':'New Item'
         }
-    return render(request, 'store/form.html', context)
+
+    return render(request,'store/form.html', context)
